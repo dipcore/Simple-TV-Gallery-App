@@ -204,9 +204,6 @@ public class MainActivity extends AppCompatActivity {
                 headerAnimOut();
             }
 
-            System.out.println("mRecyclerViewScrollPositionY " + mRecyclerViewScrollPositionY);
-            System.out.println("mRecyclerViewScrollPositionY - delta " + (mRecyclerViewScrollPositionY - delta));
-            System.out.println("headerHeight " + headerHeight);
         }
     };
 
