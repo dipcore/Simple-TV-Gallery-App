@@ -225,9 +225,9 @@ public class MainActivity extends AppCompatActivity {
     private void headerDropIn() {
         System.out.println("headerDropIn");
         headerVisible = true;
-        int headerHeight = headerView.getMeasuredHeight();
-        headerView.setTranslationY(-headerHeight);
-        ViewCompat.animate(headerView).translationY(0).setDuration(200).setInterpolator(new DecelerateInterpolator()).start();
+        ///int headerHeight = headerView.getMeasuredHeight();
+        headerView.setTranslationY(0);
+        ///ViewCompat.animate(headerView).translationY(0).setDuration(200).setInterpolator(new DecelerateInterpolator()).start();
     }
 
     private void headerAnimOut(){
