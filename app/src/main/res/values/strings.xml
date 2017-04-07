@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">TV Image Gallery</string>
+    <string name="categoryListTitle">Gallery</string>
+    <string name="categoryListSubTitle">Total images:</string>
+    <string name="imageListSubTitle">Images:</string>
+</resources>
