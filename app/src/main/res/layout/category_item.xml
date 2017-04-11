@@ -9,13 +9,15 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ddd">
+        android:background="#dae1e9">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:id="@+id/imageView"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/folder_bg" />
 
         <LinearLayout
             android:orientation="vertical"

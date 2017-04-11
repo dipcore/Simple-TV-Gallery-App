@@ -86,7 +86,13 @@ public class ImageViewerActivity extends AppCompatActivity {
 
     private void showCurrentImage(){
         ImageView imageView = (ImageView) imageSwitcher.getNextView();
-        imageView.setImageURI(imageList.get(imageIndex).getUri());
+        Glide.with(getApplicationContext())
+                .fromMediaStore()
+                .load(imageList.get(imageIndex).getUri())
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .dontAnimate()
+                .into(imageView);
+
     }
 
     private void showNextImage(){

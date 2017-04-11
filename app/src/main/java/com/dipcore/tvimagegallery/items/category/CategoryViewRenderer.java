@@ -60,13 +60,13 @@ public class CategoryViewRenderer extends ViewRenderer<CategoryItemModel, Catego
 
     private void animOut(View view) {
         final float n = 1.0f;
-        ViewCompat.animate(view).scaleX(n).scaleY(n).setDuration(200).setInterpolator(new DecelerateInterpolator()).start();
-        ViewCompat.animate(view.findViewById(R.id.overlay)).alpha(1f).setDuration(200).setInterpolator(new DecelerateInterpolator()).start();
+        ViewCompat.animate(view).scaleX(n).scaleY(n).setDuration(150).setInterpolator(new DecelerateInterpolator()).start();
+        ViewCompat.animate(view.findViewById(R.id.overlay)).alpha(1f).setDuration(150).setInterpolator(new DecelerateInterpolator()).start();
     }
 
     private void animIn(View view) {
         final float n = 1.2f;
-        ViewCompat.animate(view).scaleX(n).scaleY(n).setDuration(200).setInterpolator(new DecelerateInterpolator()).start();
-        ViewCompat.animate(view.findViewById(R.id.overlay)).alpha(0f).setDuration(200).setInterpolator(new DecelerateInterpolator()).start();
+        ViewCompat.animate(view).scaleX(n).scaleY(n).setDuration(150).setInterpolator(new DecelerateInterpolator()).start();
+        ViewCompat.animate(view.findViewById(R.id.overlay)).alpha(0f).setDuration(150).setInterpolator(new DecelerateInterpolator()).start();
     }
 }

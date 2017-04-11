@@ -3,4 +3,6 @@
     <string name="categoryListTitle">Gallery</string>
     <string name="categoryListSubTitle">Total images:</string>
     <string name="imageListSubTitle">Images:</string>
+    <string name="size">Size:</string>
+    <string name="date">Date:</string>
 </resources>

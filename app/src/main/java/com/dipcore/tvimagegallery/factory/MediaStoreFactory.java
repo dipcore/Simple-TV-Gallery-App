@@ -41,11 +41,15 @@ public class MediaStoreFactory {
         String[] projection = new String[] {
                 MediaStore.Images.ImageColumns._ID,
                 MediaStore.Images.ImageColumns.DATA,
+                MediaStore.Images.ImageColumns.DISPLAY_NAME,
                 MediaStore.Images.ImageColumns.BUCKET_DISPLAY_NAME,
                 MediaStore.Images.ImageColumns.DATE_TAKEN,
                 MediaStore.Images.ImageColumns.DATE_MODIFIED,
                 MediaStore.Images.ImageColumns.ORIENTATION,
-                MediaStore.Images.ImageColumns.MIME_TYPE
+                MediaStore.Images.ImageColumns.MIME_TYPE,
+                MediaStore.Images.ImageColumns.HEIGHT,
+                MediaStore.Images.ImageColumns.WIDTH,
+                MediaStore.Images.ImageColumns.SIZE
         };
 
         String order = MediaStore.Images.ImageColumns.DATE_MODIFIED + " DESC";
@@ -58,43 +62,32 @@ public class MediaStoreFactory {
 
         if (cur.moveToFirst()) {
             long id;
+            String name;
             String bucket;
             long dateTaken;
             long dateModified;
             int orientation;
             String mimeType;
             String data;
+            int height;
+            int width;
+            long size;
+            long thumbnailId;
 
-            int idColumn = cur.getColumnIndex(
-                    MediaStore.Images.Media._ID);
-
-            int bucketColumn = cur.getColumnIndex(
-                    MediaStore.Images.Media.BUCKET_DISPLAY_NAME);
-
-            int dateTakenColumn = cur.getColumnIndex(
-                    MediaStore.Images.Media.DATE_TAKEN);
-
-            int dateModifiedColumn = cur.getColumnIndex(
-                    MediaStore.Images.Media.DATE_MODIFIED);
-
-            int orientationColumn = cur.getColumnIndex(
-                    MediaStore.Images.Media.ORIENTATION);
-
-            int mimeTypeColumn = cur.getColumnIndex(
-                    MediaStore.Images.Media.MIME_TYPE);
-
-            int dataColumn = cur.getColumnIndex(
-                    MediaStore.Images.Media.DATA);
 
             do {
                 // Get the field values
-                id = cur.getLong(idColumn);
-                bucket = cur.getString(bucketColumn);
-                dateTaken = cur.getLong(dateTakenColumn);
-                dateModified = cur.getLong(dateModifiedColumn);
-                orientation = cur.getInt(orientationColumn);
-                mimeType = cur.getString(mimeTypeColumn);
-                data = cur.getString(dataColumn);
+                id = cur.getLong(cur.getColumnIndex(MediaStore.Images.Media._ID));
+                data = cur.getString(cur.getColumnIndex(MediaStore.Images.Media.DATA));
+                name = cur.getString(cur.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME));
+                bucket = cur.getString(cur.getColumnIndex(MediaStore.Images.Media.BUCKET_DISPLAY_NAME));
+                dateTaken = cur.getLong(cur.getColumnIndex(MediaStore.Images.Media.DATE_TAKEN));
+                dateModified = cur.getLong(cur.getColumnIndex(MediaStore.Images.Media.DATE_MODIFIED));
+                orientation = cur.getInt(cur.getColumnIndex(MediaStore.Images.Media.ORIENTATION));
+                mimeType = cur.getString(cur.getColumnIndex(MediaStore.Images.Media.MIME_TYPE));
+                height = cur.getInt(cur.getColumnIndex(MediaStore.Images.Media.HEIGHT));
+                width = cur.getInt(cur.getColumnIndex(MediaStore.Images.Media.WIDTH));
+                size = cur.getLong(cur.getColumnIndex(MediaStore.Images.Media.SIZE));
 
                 // Add imageItem
                 ArrayList<ItemModel> imageList = categoryMap.get(bucket);
@@ -102,7 +95,7 @@ public class MediaStoreFactory {
                     imageList = new ArrayList<>();
                     categoryMap.put(bucket, imageList);
                 }
-                imageList.add(new ImageItemModel(data, bucket, id, dateTaken, dateModified, mimeType, orientation));
+                imageList.add(new ImageItemModel(data, name, bucket, id, dateTaken, dateModified, mimeType, orientation, height, width, size));
                 totalImages ++;
 
             } while (cur.moveToNext());

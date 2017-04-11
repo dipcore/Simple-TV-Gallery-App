@@ -15,14 +15,16 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:id="@+id/imageView"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:scaleType="centerCrop" />
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:background="@android:color/holo_blue_dark"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:layout_marginTop="-1dp">
 
             <TextView
                 android:text="TextView"
@@ -30,7 +32,48 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/title"
                 android:textColor="@android:color/background_light"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:lines="1"
+                android:ellipsize="middle" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="@string/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp" />
+
+                <TextView
+                    android:text="TextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dateTextView"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="@string/size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp" />
+
+                <TextView
+                    android:text="TextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sizeTextView"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
@@ -39,6 +82,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/overlay"
-        android:background="#60000000" />
+        android:background="#80000000" />
 
 </RelativeLayout>

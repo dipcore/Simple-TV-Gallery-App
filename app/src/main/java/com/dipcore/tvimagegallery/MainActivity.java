@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
@@ -220,7 +221,6 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void headerDropIn() {
-        System.out.println("headerDropIn");
         headerVisible = true;
         ///int headerHeight = headerView.getMeasuredHeight();
         headerView.setTranslationY(0);
@@ -228,14 +228,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void headerAnimOut(){
-        System.out.println("headerAnimOut");
         headerVisible = false;
         int headerHeight = headerView.getMeasuredHeight();
         ViewCompat.animate(headerView).translationY(-headerHeight).setDuration(200).setInterpolator(new DecelerateInterpolator()).start();
     }
 
     private void headerAnimIn(){
-        System.out.println("headerAnimIn");
         headerVisible = true;
         ViewCompat.animate(headerView).translationY(0).setDuration(200).setInterpolator(new DecelerateInterpolator()).start();
     }

@@ -1,6 +1,11 @@
 package com.dipcore.tvimagegallery.items.image;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.ThumbnailUtils;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
@@ -31,7 +36,14 @@ public class ImageViewRenderer extends ViewRenderer<ImageItemModel, ImageViewHol
         holder.mViewAll.setDuplicateParentStateEnabled(true);
 
         // Set title
-        holder.mTitle.setText(model.getTitle());
+        holder.mTitle.setText(model.getName());
+
+        // Set size
+        holder.mSizeTextView.setText(String.format("%dx%d (%s)",
+                model.getWidth(), model.getHeight(),
+                model.getSizeHumanReadable()
+        ));
+
 
         Glide.with(getContext())
                 .fromMediaStore()
@@ -75,13 +87,13 @@ public class ImageViewRenderer extends ViewRenderer<ImageItemModel, ImageViewHol
 
     private void animOut(View view) {
         final float n = 1.0f;
-        ViewCompat.animate(view).scaleX(n).scaleY(n).setDuration(200).setInterpolator(new DecelerateInterpolator()).start();
-        ViewCompat.animate(view.findViewById(R.id.overlay)).alpha(1f).setDuration(200).setInterpolator(new DecelerateInterpolator()).start();
+        ViewCompat.animate(view).scaleX(n).scaleY(n).setDuration(150).setInterpolator(new DecelerateInterpolator()).start();
+        ViewCompat.animate(view.findViewById(R.id.overlay)).alpha(1f).setDuration(150).setInterpolator(new DecelerateInterpolator()).start();
     }
 
     private void animIn(View view) {
         final float n = 1.2f;
-        ViewCompat.animate(view).scaleX(n).scaleY(n).setDuration(200).setInterpolator(new DecelerateInterpolator()).start();
-        ViewCompat.animate(view.findViewById(R.id.overlay)).alpha(0f).setDuration(200).setInterpolator(new DecelerateInterpolator()).start();
+        ViewCompat.animate(view).scaleX(n).scaleY(n).setDuration(150).setInterpolator(new DecelerateInterpolator()).start();
+        ViewCompat.animate(view.findViewById(R.id.overlay)).alpha(0f).setDuration(150).setInterpolator(new DecelerateInterpolator()).start();
     }
 }
